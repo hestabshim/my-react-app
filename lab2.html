@@ -2,49 +2,66 @@
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 
-<head></head>
+<head>
+
+
+</head>
 
 <body>
 
-
-
-
-
-
-
     <h1>JavaScript Practice</h1>
     <div>
-        <ul></ul>
-        Delete All
-        Delete One Item
+        <ul id="list"></ul>
+        <button id="addOne">Add Item</button>
+        <button id="deleteAll">Delete All</button>
+        <button id="deleteOne">Delete One Item</button>
     </div>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function (event) {
 
-
-
-    <script type="module" src="https://s.brightspace.com/lib/bsi/2024.12.210/unbundled/mathjax.js"></script>
-    <script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
-            if (document.querySelector('math') || /\$\$|\\\(|\\\[|\\begin{|\\ref{|\\eqref{/.test(document.body.innerHTML)) {
-                document.querySelectorAll('mspace[linebreak="newline"]').forEach(elm => {
-                    elm.setAttribute('style', 'display: block; height: 0.5rem;');
-                });
-
-                window.D2L.MathJax.loadMathJax({
-                    outputScale: 1.5,
-                    renderLatex: true,
-                    enableMML3Support: false
-                });
+            const randomColor = getRandomColor();
+            function getRandomColor() {
+                const letters = '0123456789ABCDEF';
+                let color = '#';
+                for (let i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
             }
-        });</script>
-    <script type="module" src="https://s.brightspace.com/lib/bsi/2024.12.210/unbundled/prism.js"></script>
-    <script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('.d2l-code').forEach(code => {
-                window.D2L.Prism.formatCodeElement(code);
+            const list = document.querySelector("#list");
+            const numbers = [1, 2, 3, 4, 5];
+            let currentIndex = 0;
+
+            const addItem = document.querySelector("#addOne");
+            addItem.addEventListener("click", () => {
+                if (currentIndex < numbers.length) {
+                    const newItem = document.createElement("li");
+                    newItem.textContent = numbers[currentIndex];
+                    newItem.style.color = randomColor;
+                    list.appendChild(newItem);
+                    currentIndex++;
+
+                } else {
+                    const newItem = document.createElement("li");
+                    list.appendChild(newItem);
+                    newItem.textContent = "No more numbers";
+                }
             });
-        });</script>
-    <script type="module" src="https://s.brightspace.com/lib/bsi/2024.12.210/unbundled/embeds.js"></script>
-    <script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
-            window.D2L.EmbedRenderer.renderEmbeds(document.body);
-        });</script>
+            const deleteOne = document.querySelector("#deleteOne");
+            deleteOne.addEventListener("click", () => {
+                const newItem = document.querySelector("li");
+                newItem.remove();
+            });
+
+            const deleteAll = document.querySelector("#deleteAll")
+            deleteAll.addEventListener("click", () => {
+                list.remove();
+            });
+        });
+    </script>
+
+
+
 </body>
 
 </html>
