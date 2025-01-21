@@ -8,7 +8,8 @@ import Card1 from './components/Card 1'
 import Card2 from './components/Card 2'
 function App() {
     return(
-      <><header>
+      <>
+      <header>
         <NavBar/>
         </header>
         <main>
@@ -24,7 +25,7 @@ function App() {
             <Card2/>
           </div>
         </main>
-        </>
+      </>
     )
   };
 
