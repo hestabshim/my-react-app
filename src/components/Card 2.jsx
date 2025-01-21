@@ -1,6 +1,6 @@
 import img from 'src/assets/ouh.png';
 
-const Card1 = () => {
+const Card2 = () => {
     const name = 'Goobli Goo';
     const title = 'Alien';
     const email = 'goobli@purdue.edu';
@@ -18,4 +18,4 @@ const Card1 = () => {
         </div>
     );
 }
-export default Card1;
+export default Card2;
