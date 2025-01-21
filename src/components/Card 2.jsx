@@ -1,4 +1,4 @@
-import img from 'src/assets/ouh.png';
+import img from '.../assets/ouh.png';
 
 const Card2 = () => {
     const name = 'Goobli Goo';

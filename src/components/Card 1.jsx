@@ -1,4 +1,4 @@
-import img from 'src/assets/pfp1.jpeg';
+import img from '.../assets/pfp1.jpeg';
 
 const Card1 = () => {
     const name = 'Amber Zeng';
