@@ -6,7 +6,7 @@ const Card1 = () => {
     const email = 'zeng274@purdue.edu';
 
     return(
-        <div className="profile-card">
+        <div id="jump" className="profile-card">
             <div className="profile-card_img">
                 <img src={img} alt={name}/>
             </div>

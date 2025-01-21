@@ -3,13 +3,13 @@ const NavBar =() => {
         <nav className="navbar">
             <ul>
                 <li>
-                Home
+                <a href='#top'>Home</a>
                 </li>
                 <li>
-                About
+                <a href="#jumpabout">About</a>
                 </li>
                 <li>
-                Profiles
+                <a href="#jump">Profiles</a> 
                 </li>
             </ul>
         </nav>

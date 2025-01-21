@@ -40,3 +40,15 @@
 .read-the-docs {
   color: #888;
 }
+img {
+  display: block;
+  width: 250px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+.profile-card_content {
+  float: left;
+}
+.section{
+  height: 400px;
+}
