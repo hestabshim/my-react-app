@@ -2,7 +2,37 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import About from './components/About'
+import NavBar from './components/Navbar'
+import Card1 from './components/Card 1'
+import Card2 from './components/Card 2'
 
+const App = () => {
+  return(
+    <><header>
+      <NavBar/>
+      </header>
+      <main>
+        <div className='section'>
+          <div className='about'>
+            <About/>
+          </div>
+        </div>
+        <div className='section'>
+          <Card1/>
+        </div>
+        <div className='section'>
+          <Card2/>
+        </div>
+      </main>
+      </>
+  )
+};
+
+
+
+
+{/* 
 function App() {
   const [count, setCount] = useState(0)
 
@@ -30,6 +60,6 @@ function App() {
       </p>
     </>
   )
-}
+} */}
 
-export default App
+export default App;
