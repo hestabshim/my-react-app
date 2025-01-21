@@ -1,8 +1,8 @@
-import img from '.../assets/pfp1.jpeg';
+import img from '../assets/pfp1.jpeg';
 
 const Card1 = () => {
     const name = 'Amber Zeng';
-    const ittle = 'Web Developer';
+    const title = 'Web Developer';
     const email = 'zeng274@purdue.edu';
 
     return(
