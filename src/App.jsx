@@ -6,28 +6,29 @@ import About from './components/About'
 import NavBar from './components/Navbar'
 import Card1 from './components/Card 1'
 import Card2 from './components/Card 2'
-
-const App = () => {
-  return(
-    <><header>
-      <NavBar/>
-      </header>
-      <main>
-        <div className='section'>
-          <div className='about'>
-            <About/>
+function App() {
+    return(
+      <><header>
+        <NavBar/>
+        </header>
+        <main>
+          <div className='section'>
+            <div className='about'>
+              <About/>
+            </div>
           </div>
-        </div>
-        <div className='section'>
-          <Card1/>
-        </div>
-        <div className='section'>
-          <Card2/>
-        </div>
-      </main>
-      </>
-  )
-};
+          <div className='section'>
+            <Card1/>
+          </div>
+          <div className='section'>
+            <Card2/>
+          </div>
+        </main>
+        </>
+    )
+  };
+
+
 
 
 
