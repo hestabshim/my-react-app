@@ -1,12 +1,8 @@
 import img from '../assets/pfp1.jpeg';
 
-const Card1 = () => {
-    const name = 'Amber Zeng';
-    const title = 'Web Developer';
-    const email = 'zeng274@purdue.edu';
-
+function Card2 ({name}, {email}, {title}){
     return(
-        <div id="jump" className="profile-card">
+        <div className="profile-card">
             <div className="profile-card_img">
                 <img src={img} alt={name}/>
             </div>
@@ -17,5 +13,10 @@ const Card1 = () => {
             </div>
         </div>
     );
+}
+Card2.defaultProps = {
+    name: "Amber Zeng",
+    email: "zeng274@purdue.edu",
+    title: "Web Designer"
 }
 export default Card1;

@@ -1,10 +1,6 @@
 import img from '../assets/ouh.png';
 
-const Card2 = () => {
-    const name = 'Goobli Goo';
-    const title = 'Alien';
-    const email = 'goobli@purdue.edu';
-
+function Card2 ({name}, {email}, {title}){
     return(
         <div className="profile-card">
             <div className="profile-card_img">
@@ -18,4 +14,9 @@ const Card2 = () => {
         </div>
     );
 }
+Card2.defaultProps = {
+    name: "Goobli Goo",
+    email: "goobli@purdue.edu",
+    title: "Alien"
+  }
 export default Card2;
