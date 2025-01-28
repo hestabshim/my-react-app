@@ -16,3 +16,4 @@ export default function Card({ children, title }) {
     ]),
     title: PropTypes.string.isRequired,
   }
+  
