@@ -1,4 +1,4 @@
-import '../App.css'
+import './App.css'
 import About from './components/About'
 import NavBar from './components/Navbar'
 import alien from './assets/ouh.png'
