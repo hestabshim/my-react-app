@@ -1,5 +1,5 @@
-import '../styles/card.css';
-import PropTypes from 'prop-types';
+import './App.css';
+import PropTypes from "prop-types";
 
 const Card = ({img, name, title, email}) => {
     return (
