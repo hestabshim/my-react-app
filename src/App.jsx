@@ -1,4 +1,4 @@
-import './App.css'
+import '../app.css'
 import About from './components/About'
 import NavBar from './components/Navbar'
 import alien from './assets/ouh.png'
@@ -25,28 +25,28 @@ function App() {
     },
     {
       id:2,
-      img: image_man,
+      img: alien,
       name: "Bob Johnson",
       title: "Web developer",
       email: "c@a.com",
     },
     {
       id:3,
-      img: image_woman,
+      img: alien,
       name: "Ava Smith",
       title: "Web developer",
       email: "d@a.com",
     },
     {
       id:4,
-      img: image_man,
+      img: alien,
       name: "Tom Smith",
       title: "Software Engineer",
       email: "e@a.com",
     },
     {
       id:5,
-      img: image_woman,
+      img: alien,
       name: "Eva Smith",
       title: "Graphic designer",
       email: "f@a.com",
