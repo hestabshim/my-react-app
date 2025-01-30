@@ -1,40 +1,139 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import About from './components/About'
 import NavBar from './components/Navbar'
-import Card1 from './components/Card 1'
-import Card2 from './components/Card 2'
+import alien from './assets/ouh.png'
+import amber from './assets/pfp1.jpeg'
+import Card from './components/maincard'
+import Wrapper from './components/wrapper'
+import { useState } from 'react'
+
 function App() {
-    return(
-      <>
-      <header>
-        <NavBar/>
-        </header>
-        <main>
-          <div className='section'>
-            <div className='about'>
-              <About/>
-            </div>
-          </div>
-          <div className='section'>
-            <Card1/>
-          </div>
-          <div className='section'>
-            <Card2/>
-          </div>
-        </main>
-      </>
-    )
+  const profiles = [
+    {
+      id:0,
+      img: alien,
+      name: "Goobli Goo",
+      title: "Alien",
+      email: "goobligoo@gmail.com",
+    },
+    {
+      id:1,
+      img: amber,
+      name: "Amber Zeng",
+      title: "UX designer",
+      email: "zeng274@purdue.edu",
+    },
+    {
+      id:2,
+      img: image_man,
+      name: "Bob Johnson",
+      title: "Web developer",
+      email: "c@a.com",
+    },
+    {
+      id:3,
+      img: image_woman,
+      name: "Ava Smith",
+      title: "Web developer",
+      email: "d@a.com",
+    },
+    {
+      id:4,
+      img: image_man,
+      name: "Tom Smith",
+      title: "Software Engineer",
+      email: "e@a.com",
+    },
+    {
+      id:5,
+      img: image_woman,
+      name: "Eva Smith",
+      title: "Graphic designer",
+      email: "f@a.com",
+    }
+  ]
+  const titles = [...new Set(profiles.map((profile) => profile.title))];
+
+  const [title, setTitle] = useState("");
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+    console.log(event.target.value);
   };
 
+  const [search, setSearch] = useState("");
+  const handleSearchChange = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const handleClear = () => {
+    setTitle("");
+    setSearch("");
+  };
+
+  const filterProfiles = profiles.filter(
+    (profile) =>
+      (title === "" || profile.title === title) &&
+      profile.name.toLowerCase().includes(search.toLowerCase())
+  );
+  return (
+    <>
+      <header>
+        
+        <NavBar />
+        
+        
+      </header>
+      <main>
+      <Wrapper>
+      <h1>Profile App </h1>
+      </Wrapper>
+      <Wrapper>
+        <About/>
+      </Wrapper>
+      <Wrapper>
+      <div className="filter-wrapper">
+            <div className="filter--select">
+              <label htmlFor="title-select">Select a title:</label>
+              <select
+                id="title-select"
+                onChange={handleTitleChange}
+                value={title}
+              >
+                <option value="">All</option>
+                {titles.map((title) => (
+                  <option key={title} value={title}>
+                    {title}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="filter--search">
+              <label htmlFor="search">Search by name:</label>
+              <input
+                type="text"
+                id="search"
+                onChange={handleSearchChange}
+                value={search}
+              />
+            </div>
+            <button onClick={handleClear}>Clear</button>
+          </div>
+          <div className="profile-cards">
+            {filterProfiles.map((profile) => (
+              <Card key={profile.email} {...profile} />
+            ))}
+          </div>
+        </Wrapper>
+      </main>
+    </>
+  )
+  
 
 
 
 
 
-{/* 
+  /* 
 function App() {
   const [count, setCount] = useState(0)
 
@@ -64,4 +163,4 @@ function App() {
   )
 } */}
 
-export default App;
+  export default App;
