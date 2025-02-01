@@ -7,7 +7,7 @@ import Card from './components/maincard'
 import Wrapper from './components/wrapper'
 import { useState } from 'react'
 
-function App() {
+const App = () => {
   const profiles = [
     {
       id:0,
@@ -93,7 +93,7 @@ function App() {
   };
 
   //filter the profiles based on the title
-  const filtedProfiles = profiles.filter(
+  const filterProfiles = profiles.filter(
     (profile) =>
       (title === "" || profile.title === title) &&
       profile.name.toLowerCase().includes(search.toLowerCase())
@@ -147,7 +147,12 @@ function App() {
           </div>
           <div className="profile-cards">
             {filterProfiles.map((profile) => (
-              <Card key={profile.id} {...profile} />
+              <Card
+              key={profile.email}
+              {...profile}
+              animate={animation}
+              updateAnimate={handleAnimation}
+            />
             ))}
           </div>
         </Wrapper>

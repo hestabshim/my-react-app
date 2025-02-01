@@ -1,9 +1,9 @@
 
-import "../styles/navbar.module.css";
+import styles from "../styles/navbar.module.css";
 
-const NavBar = () => {
+const NavBar = ({mode, updateMode}) => {
   return (
-    <nav className="navbar">
+    <nav className={`${styles["navbar"]}`}>
       <ul>
         <li>
           <a href="#">Home</a>
