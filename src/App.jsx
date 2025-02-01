@@ -120,7 +120,7 @@ function App() {
           </div>
           <div className="profile-cards">
             {filterProfiles.map((profile) => (
-              <Card key={profile.email} {...profile} />
+              <Card key={profile.id} {...profile} />
             ))}
           </div>
         </Wrapper>
