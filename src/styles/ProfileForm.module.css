@@ -1,0 +1,16 @@
+.profile-form {
+    max-width: 900px;
+    margin:0 auto;
+    display:flex;
+    flex-direction: column;
+    input, textarea{
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;  
+      margin:0.5rem 0;  
+    }
+    button{
+      align-self:flex-start;
+      border:1px solid var(--button-border-color);
+    }
+  }

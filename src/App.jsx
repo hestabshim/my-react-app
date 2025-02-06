@@ -5,7 +5,9 @@ import alien from './assets/ouh.png'
 import amber from './assets/pfp1.jpeg'
 import Card from './components/maincard'
 import Wrapper from './components/wrapper'
+import ProfileForm from "./components/ProfileForm";
 import { useState } from 'react'
+
 
 const App = () => {
   const profiles = [
@@ -72,7 +74,7 @@ const App = () => {
   const titles = [...new Set(profiles.map((profile) => profile.title))];
 
   const [title, setTitle] = useState("");
-  //update the title on change of the drowndrop
+  //update the title on change of the downdrop
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
     setAnimation(true);
@@ -117,6 +119,9 @@ const App = () => {
       <Wrapper>
         <About/>
       </Wrapper>
+      <Wrapper>
+          <ProfileForm />
+        </Wrapper>
       <Wrapper>
       <div className="filter-wrapper">
             <div className="filter--select">
