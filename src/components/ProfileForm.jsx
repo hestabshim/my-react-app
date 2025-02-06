@@ -1,6 +1,7 @@
 import {useState} from "react";
 import style from "../styles/ProfileForm.module.css";
 
+
 const ProfileForm = () => {
   const [data, setData] = useState({ name: "", title: "", email: "", bio: "" });
   const handleChange = (e) => {
