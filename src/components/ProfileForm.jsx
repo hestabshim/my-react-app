@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "../styles/ProfileForm.module.css";
 
 
@@ -80,7 +80,7 @@ const ProfileForm = () => {
       setSubmitting(false);
     }
   };
-
+  
   return (
     <form onSubmit={handleSubmit} className={style["profile-form"]}>
       <input

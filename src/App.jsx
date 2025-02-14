@@ -7,55 +7,20 @@ import Card from './components/maincard'
 import Wrapper from './components/wrapper'
 import ProfileForm from "./components/ProfileForm";
 import { useState } from 'react'
-
+import { useEffect } from 'react'
+import { use } from "react";
 
 const App = () => {
-  const profiles = [
-    {
-      id:0,
-      img: alien,
-      name: "Goobli Goo",
-      title: "Alien",
-      email: "goobligoo@gmail.com",
-    },
-    {
-      id:1,
-      img: amber,
-      name: "Amber Zeng",
-      title: "UX designer",
-      email: "zeng274@purdue.edu",
-    },
-    {
-      id:2,
-      img: alien,
-      name: "Bob Johnson",
-      title: "Web developer",
-      email: "c@a.com",
-    },
-    {
-      id:3,
-      img: alien,
-      name: "Ava Smith",
-      title: "Web developer",
-      email: "d@a.com",
-    },
-    {
-      id:4,
-      img: alien,
-      name: "Tom Smith",
-      title: "Software Engineer",
-      email: "e@a.com",
-    },
-    {
-      id:5,
-      img: alien,
-      name: "Eva Smith",
-      title: "Graphic designer",
-      email: "f@a.com",
-    }
-  ]
-
-;
+  const [profiles, setProfiles] = useState([]);
+  useEffect(() => {
+    fetch("https://web.ics.purdue.edu/~zeng274/profile-app/fetch-data.php")
+      .then((res) => res.json())
+      .then((data) => {
+        setProfiles(data);
+        console.log(data)
+      })
+  }, []);
+  
   //Variable to store the animation state
   const [animation, setAnimation] = useState(false);
   //function to update the animation state
@@ -104,7 +69,7 @@ const App = () => {
     border: "1px solid #ccc",
   };
 
-  return (
+return (
     <>
       <header>
         
@@ -163,9 +128,56 @@ const App = () => {
         </Wrapper>
       </main>
     </>
-  )
-  
+  );
+};
 
+//   const profiles = [
+//     {
+//       id:0,
+//       img: alien,
+//       name: "Goobli Goo",
+//       title: "Alien",
+//       email: "goobligoo@gmail.com",
+//     },
+//     {
+//       id:1,
+//       img: amber,
+//       name: "Amber Zeng",
+//       title: "UX designer",
+//       email: "zeng274@purdue.edu",
+//     },
+//     {
+//       id:2,
+//       img: alien,
+//       name: "Bob Johnson",
+//       title: "Web developer",
+//       email: "c@a.com",
+//     },
+//     {
+//       id:3,
+//       img: alien,
+//       name: "Ava Smith",
+//       title: "Web developer",
+//       email: "d@a.com",
+//     },
+//     {
+//       id:4,
+//       img: alien,
+//       name: "Tom Smith",
+//       title: "Software Engineer",
+//       email: "e@a.com",
+//     },
+//     {
+//       id:5,
+//       img: alien,
+//       name: "Eva Smith",
+//       title: "Graphic designer",
+//       email: "f@a.com",
+//     }
+//   ]
+
+// ;
+ 
 
 
 
@@ -198,6 +210,6 @@ function App() {
       </p>
     </>
   )
-} */}
+} */
 
   export default App;
