@@ -1,0 +1,41 @@
+/* filters */
+/* profile container */
+.profile-cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -0.75rem;
+  }
+  .filter-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    margin-top:3rem;
+  }
+  .filter--search,
+  .filter--select,
+  button {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  select,
+  input {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  /* Pagination */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+    button:disabled {
+      cursor: not-allowed;
+      background-color: var(--button-hover-background-color);
+      color: var(--button-hover-text-color);
+    }
+    button{
+      margin: 0.5rem;
+    }
+  }

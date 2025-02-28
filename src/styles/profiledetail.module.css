@@ -1,0 +1,21 @@
+.flex-container{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  .button{
+    padding: 0.5rem 1rem;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 3rem;
+  }
+  .button:hover{
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+  }
