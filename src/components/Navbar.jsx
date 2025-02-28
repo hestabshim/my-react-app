@@ -1,24 +1,30 @@
 
 import styles from "../styles/navbar.module.css";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ModeContext } from "../contexts/ModeContext";
 
-const NavBar = ({mode, updateMode}) => {
+const Navbar = () => {
+  const { mode, toggleMode } = useContext(ModeContext);
+
   return (
     <nav className={`${styles["navbar"]}`}>
       <ul>
         <li>
-          <a href="#">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="#">About</a>
+          <Link to="/about">About</Link>
         </li>
         <li>
-          <a href="#">Profiles</a>
+          <Link to="/add-profile">Add Profile</Link>
         </li>
       </ul>
-      <button onClick={updateMode}>
+      <button onClick={toggleMode}>
         {mode === "light" ? "Light Mode" : "Dark Mode"}
       </button>
     </nav>
   );
 };
-export default NavBar;
+
+export default Navbar;

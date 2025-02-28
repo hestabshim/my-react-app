@@ -1,5 +1,5 @@
 import About from "../components/About";
-import Wrapper from "../components/Wrapper";
+import Wrapper from "../components/wrapper";
 
 const AboutPage = () => {
   return (

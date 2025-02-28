@@ -1,4 +1,4 @@
-import Wrapper from "../components/Wrapper";
+import Wrapper from "../components/wrapper";
 import ProfileForm from "../components/ProfileForm";
 
 const AddProfilePage = () => {

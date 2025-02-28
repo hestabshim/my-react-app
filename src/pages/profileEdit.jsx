@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Wrapper from "../components/Wrapper";
+import Wrapper from "../components/wrapper";
 import { useNavigate } from "react-router-dom";
 import ProfileForm from "../components/ProfileForm";
 
@@ -10,7 +10,7 @@ const ProfileEditPage = () => {
   const [profile, setProfile] = useState({});
   useEffect(() => {
     fetch(
-      `https://web.ics.purdue.edu/~zong6/profile-app/fetch-data-with-id.php?id=${id}`
+      `https://web.ics.purdue.edu/~zeng274/profile-app/fetch-data-with-id.php?id=${id}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -22,7 +22,7 @@ const ProfileEditPage = () => {
       return;
     }
     fetch(
-      `https://web.ics.purdue.edu/~zong6/profile-app/delete-profile.php?id=${id}`,
+      `https://web.ics.purdue.edu/~zeng274/profile-app/delete-profile.php?id=${id}`,
       {
         method: "DELETE",
       }

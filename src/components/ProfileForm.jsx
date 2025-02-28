@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import style from "../styles/ProfileForm.module.css";
 
-
 const ProfileForm = () => {
-
   const [data, setData] = useState({
     name: "",
     title: "",
@@ -57,30 +55,32 @@ const ProfileForm = () => {
       const response = await fetch(
         "https://web.ics.purdue.edu/~zeng274/profile-app/send-data.php",
         {
-          method: "POST",
+          method: 'POST',
           body: formData,
-          mode: "no-cors"
+          mode: "no-cors",
         }
       );
 
       const result = await response.json();
       if (result.success) {
-        setData({ name: "", email: "", title: "", bio: "", image: null }); // Clear form
-        setErrors({image: "", general: "" }); // Clear errors
-        setTimeout(()=> setSuccessMessage(), 1000);
+        setData({ name: "", title: "", email: "", bio: "", image: null });
+        setErrors({ image: "", general: "" });
+        setSuccessMessage("Data submitted successfully.");
+        setTimeout(() => {
+          setSuccessMessage("");
+        }, 1000);
+        isEdit && navigate(-1);
       } else {
-        setErrors({ ...errors, general: result.message });
+        setErrors({ image: "", general: result.message });
+        setSuccessMessage("");
       }
     } catch (error) {
-      setErrors({
-        ...errors,
-        general: "An error occurred. Please try again later.",
-      });
+      setErrors({ image: "", general: error });
     } finally {
       setSubmitting(false);
     }
   };
-  
+
   return (
     <form onSubmit={handleSubmit} className={style["profile-form"]}>
       <input
@@ -118,7 +118,7 @@ const ProfileForm = () => {
         value={data.bio}
         onChange={handleChange}
       ></textarea>
-    <p className="char-count">{200 - data.bio.length} characters remaining</p>
+      <p className="char-count">{200 - data.bio.length} characters remaining</p>
 
       <label htmlFor="image">Upload a profile image:</label>
       <input
@@ -129,10 +129,21 @@ const ProfileForm = () => {
         required
         onChange={handleFileChange}
       />
-    {errors.image && <p className="error">{errors.image}</p>}
+      {errors.image && <p className="error">{errors.image}</p>}
       <button
         type="submit"
-        disabled={submitting || Object.values(errors).some((err) => err !== ""|| data.name.trim() === "" || data.email.trim() === "" || data.title.trim() === "" || data.bio.trim() === "" || data.image === null)}
+        disabled={
+          submitting ||
+          Object.values(errors).some(
+            (err) =>
+              err !== "" ||
+              data.name.trim() === "" ||
+              data.email.trim() === "" ||
+              data.title.trim() === "" ||
+              data.bio.trim() === "" ||
+              data.image === null
+          )
+        }
       >
         {submitting ? "Submitting..." : "Submit"}
       </button>
