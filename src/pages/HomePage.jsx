@@ -1,37 +1,32 @@
 import Card from "../components/maincard";
 import Wrapper from "../components/wrapper";
 import { useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useReducer } from "react";
 import styles from "../styles/home.module.css";
 import { Link } from "react-router-dom";
+import { initialState, homeReducer } from "../reducers/homeReducer";
 
 const HomePage = () => {
-  const [titles, setTitles] = useState([]);
-  const [title, setTitle] = useState("");
-  const [search, setSearch] = useState("");
-  const [profiles, setProfiles] = useState([]);
-  const [page, setPage] = useState(1);
-  const [count, setCount] = useState(1);
+  const [state, dispatch] = useReducer(homeReducer, initialState);
+  const { titles, title, search, profiles, page, count } = state;
 
   // get titles
   useEffect(() => {
     fetch("https://web.ics.purdue.edu/~zeng274/profile-app/get-titles.php")
       .then((res) => res.json())
       .then((data) => {
-        setTitles(data.titles);
+        dispatch({ type: "SET_TITLES", payload: data.titles });
       });
   }, []);
 
   //update the title on change of the drowndrop
   const handleTitleChange = (event) => {
-    setTitle(event.target.value);
-    setPage(1);
+    dispatch({ type: "SET_TITLE", payload: event.target.value });
   };
 
   //update the search on change of the input
   const handleSearchChange = (event) => {
-    setSearch(event.target.value);
-    setPage(1);
+    dispatch({ type: "SET_SEARCH", payload: event.target.value });
   };
   //fetch the data from the server
   useEffect(() => {
@@ -40,16 +35,12 @@ const HomePage = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        setProfiles(data.profiles);
-        setCount(data.count);
-        setPage(data.page);
+        dispatch({ type: "FETCH_DATA", payload: data });
       });
   }, [title, search, page]);
   //clear the title and search
   const handleClear = () => {
-    setTitle("");
-    setSearch("");
-    setPage(1);
+    dispatch({ type: "CLEAR_FILTER" });
   };
 
   const buttonStyle = {
@@ -87,21 +78,24 @@ const HomePage = () => {
       <div className={styles["profile-cards"]}>
         {profiles.map((profile) => (
           <Link to={`/profile/${profile.id}`} key={profile.id}>
-          <Card key={profile.id} {...profile} />
+            <Card {...profile} />
           </Link>
         ))}
       </div>
       {count === 0 && <p>No profiles found!</p>}
       {count > 10 && (
         <div className={styles["pagination"]}>
-          <button onClick={() => setPage(page - 1)} disabled={page === 1}>
+          <button
+            onClick={() => dispatch({ type: "SET_PAGE", payload: page - 1 })}
+            disabled={page === 1}
+          >
             <span className="sr-only">Previous</span>
           </button>
           <span>
             {page}/{Math.ceil(count / 10)}
           </span>
           <button
-            onClick={() => setPage(page + 1)}
+            onClick={() => dispatch({ type: "SET_PAGE", payload: page + 1 })}
             disabled={page >= Math.ceil(count / 10)}
           >
             <span className="sr-only">Next</span>

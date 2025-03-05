@@ -1,4 +1,3 @@
-
 import style from "../styles/card.module.css";
 import PropTypes from "prop-types";
 
