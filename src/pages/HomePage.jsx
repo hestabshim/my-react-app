@@ -1,47 +1,27 @@
 import Card from "../components/maincard";
 import Wrapper from "../components/wrapper";
-import { useState } from "react";
-import { useEffect, useReducer } from "react";
 import styles from "../styles/home.module.css";
 import { Link } from "react-router-dom";
-import { initialState, homeReducer } from "../reducers/homeReducer";
+import useTitles from "../hooks/useTitles";
+import useProfiles from "../hooks/useProfiles";
 
 const HomePage = () => {
-  const [state, dispatch] = useReducer(homeReducer, initialState);
-  const { titles, title, search, profiles, page, count } = state;
+  const {
+    titles,
+    selectedTitle,
+    search,
+    handleTitleChange,
+    handleSearchChange,
+    clearFilters
+  } = useTitles();
 
-  // get titles
-  useEffect(() => {
-    fetch("https://web.ics.purdue.edu/~zeng274/profile-app/get-titles.php")
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({ type: "SET_TITLES", payload: data.titles });
-      });
-  }, []);
-
-  //update the title on change of the drowndrop
-  const handleTitleChange = (event) => {
-    dispatch({ type: "SET_TITLE", payload: event.target.value });
-  };
-
-  //update the search on change of the input
-  const handleSearchChange = (event) => {
-    dispatch({ type: "SET_SEARCH", payload: event.target.value });
-  };
-  //fetch the data from the server
-  useEffect(() => {
-    fetch(
-      `https://web.ics.purdue.edu/~zeng274/profile-app/fetch-data-with-filter.php?title=${title}&name=${search}&page=${page}&limit=10`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({ type: "FETCH_DATA", payload: data });
-      });
-  }, [title, search, page]);
-  //clear the title and search
-  const handleClear = () => {
-    dispatch({ type: "CLEAR_FILTER" });
-  };
+  const {
+    profiles,
+    page,
+    count,
+    goToNextPage,
+    goToPreviousPage
+  } = useProfiles(selectedTitle, search);
 
   const buttonStyle = {
     border: "1px solid #ccc",
@@ -53,7 +33,11 @@ const HomePage = () => {
       <div className={styles["filter-wrapper"]}>
         <div className={styles["filter--select"]}>
           <label htmlFor="title-select">Select a title:</label>
-          <select id="title-select" onChange={handleTitleChange} value={title}>
+          <select
+            id="title-select"
+            onChange={handleTitleChange}
+            value={selectedTitle}
+          >
             <option value="">All</option>
             {titles.map((title) => (
               <option key={title} value={title}>
@@ -71,7 +55,7 @@ const HomePage = () => {
             value={search}
           />
         </div>
-        <button onClick={handleClear} style={buttonStyle}>
+        <button onClick={clearFilters} style={buttonStyle}>
           <span className="sr-only">Reset</span>
         </button>
       </div>
@@ -86,7 +70,7 @@ const HomePage = () => {
       {count > 10 && (
         <div className={styles["pagination"]}>
           <button
-            onClick={() => dispatch({ type: "SET_PAGE", payload: page - 1 })}
+            onClick={goToPreviousPage}
             disabled={page === 1}
           >
             <span className="sr-only">Previous</span>
@@ -95,7 +79,7 @@ const HomePage = () => {
             {page}/{Math.ceil(count / 10)}
           </span>
           <button
-            onClick={() => dispatch({ type: "SET_PAGE", payload: page + 1 })}
+            onClick={goToNextPage}
             disabled={page >= Math.ceil(count / 10)}
           >
             <span className="sr-only">Next</span>
