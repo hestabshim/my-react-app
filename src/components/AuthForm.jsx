@@ -37,7 +37,7 @@ const AuthForm = ({ isRegister = false }) => {
 
     try {
       const response = await fetch(
-        "https://web.ics.purdue.edu/~zong6/profile-app/auth.php",
+        "https://web.ics.purdue.edu/~zeng274/profile-app/auth.php",
         {
           method: "POST",
           body: formData,

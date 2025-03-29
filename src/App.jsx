@@ -14,9 +14,10 @@ import ModeContext from "./contexts/ModeContext";
 import { useContext } from "react";
 import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { lazy, Suspense } from "react";
 
 const App = () => {
-
+  const LazyComponent = lazy(() => import("./pages/profileDetailed"));
   const { mode } = useContext(ModeContext);
 
   return (
@@ -35,8 +36,8 @@ const App = () => {
               </ProtectedRoute>
               } />
             <Route path="/profile/:id" element={<ProfileIndexPage />}>
-              <Route index element={<ProfileDetailPage />} />
-              <Route path="edit" element={<ProtectedRoute><ProfileEditPage /></ProtectedRoute>} />
+            <Route index element={<Suspense fallback = {<div>Loading...</div>}><LazyComponent /></Suspense>} />
+            <Route path="edit" element={<ProtectedRoute><ProfileEditPage /></ProtectedRoute>} />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<RegisterPage />} />

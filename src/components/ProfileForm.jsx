@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, memo} from "react";
 import style from "../styles/ProfileForm.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -31,7 +31,7 @@ const ProfileForm = ({ isEdit = false, currentProfile = {} }) => {
   const [submitting, setSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = useCallback(() => {
     if (e.target.name === "image") {
       const file = e.target.files[0];
       if (file.size > 2000000) {
@@ -44,7 +44,7 @@ const ProfileForm = ({ isEdit = false, currentProfile = {} }) => {
     } else {
       setData({ ...data, [e.target.name]: e.target.value });
     }
-  };
+  },[]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 
 const AuthContext = createContext();
 
@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
         setIsLogin(true);
         localStorage.setItem("isLogin", "true");
       };
-      const logout = () => {
+      const logout = useCallback(() => {
         fetch("https://web.ics.purdue.edu/~zeng274/profile-app/logout.php")
         .then((response) => response.json())
         .then(data => {
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
           console.log(error);
         });
 
-      };
+      },[]);
 
       return (
         <AuthContext.Provider value={{ isLogin, login, logout }}>
