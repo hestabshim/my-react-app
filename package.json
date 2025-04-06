@@ -11,9 +11,11 @@
     "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.6.1",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^7.2.0",
     "sass": "^1.83.4"
   },

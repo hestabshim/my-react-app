@@ -4,7 +4,6 @@ import styles from "../styles/home.module.css";
 import { Link } from "react-router-dom";
 import useTitles from "../hooks/useTitles";
 import useProfiles from "../hooks/useProfiles";
-import useAuth from "../hooks/useAuth";
 
 const HomePage = () => {
   const {
@@ -24,7 +23,6 @@ const HomePage = () => {
     goToPreviousPage
   } = useProfiles(selectedTitle, search);
 
-  const { logout } = useAuth();
 
   const buttonStyle = {
     border: "1px solid #ccc",
@@ -34,20 +32,7 @@ const HomePage = () => {
     <Wrapper>
       <div className={styles["header"]}>
         <h1>Profile App</h1>
-        <button 
-          onClick={logout}
-          style={{
-            ...buttonStyle,
-            padding: "8px 16px",
-            backgroundColor: "#f44336",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer"
-          }}
-        >
-          Logout
-        </button>
+    
       </div>
       <div className={styles["filter-wrapper"]}>
         <div className={styles["filter--select"]}>
