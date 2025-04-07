@@ -13,12 +13,13 @@ import ModeContext from "./contexts/ModeContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { lazy, Suspense } from "react";
-
+import ChatBot from "./components/chatbot";
 const App = () => {
   const LazyComponent = lazy(() => import("./pages/profileDetailed"));
 
   return (
-      <HashRouter>
+    <>
+     <HashRouter>
         <header>
           <Navbar />
         </header>
@@ -41,6 +42,9 @@ const App = () => {
           </Routes>
         </main>
       </HashRouter>
+      <ChatBot/>
+    </>
+     
   );
 };
 

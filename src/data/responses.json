@@ -1,0 +1,63 @@
+{
+  "joke": {
+    "patterns": ["joke", "funny", "laugh"],
+    "responses": [
+      "How can you spot a nosy pepper? It gets Jalapeño business!",
+
+      "I’m addicted to brake fluid, but it’s OK because I can stop at any time.",
+      "What do you call an alligator in a vest? An investigator.",
+
+      "Did you know deer can jump higher than the average house? It’s because of their strong hind legs and the fact that the average house can’t jump."
+    ]
+  },
+  "greetings": {
+    "patterns": [
+      "hi",
+      "hello",
+      "hey",
+      "good morning",
+      "good afternoon",
+      "good evening"
+    ],
+    "responses": [
+      "Hi!",
+      "Hi there! Can I tell you a joke?",
+      "Hey! Nice to meet you. How can I assist you?"
+    ]
+  },
+  "farewells": {
+    "patterns": ["bye", "goodbye", "see you", "good night"],
+    "responses": [
+      "Goodbye! Have a great day!",
+      "See you later! Take care!",
+      "Bye! Feel free to come back if you want to laugh."
+    ]
+  },
+  "thanks": {
+    "patterns": ["thanks", "thank you", "appreciate it"],
+    "responses": ["You're welcome!", "No problem at all!", "Glad I could help!"]
+  },
+  "help": {
+    "patterns": ["help", "what can you do", "capabilities"],
+    "responses": [
+      "I make bad puns :3",
+      "Try saying 'make me laugh'",
+      "I can tell jokes!"
+    ]
+  },
+  "insults": {
+    "patterns": ["you suck", "not funny", "idiot"],
+    "responses": [
+      "That's not very nice :(",
+      "You hurt my feelings :sob:",
+      "Why are you so mean?"
+    ]
+  },
+  "default": {
+    "responses": [
+      "I'm not sure I understand. Could you rephrase that?",
+      "I'm still learning. Could you try asking something else?",
+      "I don't have a specific response for that yet. Try asking something else!"
+    ]
+  }
+}

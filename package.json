@@ -11,6 +11,10 @@
     "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^7.0.1",
+    "@mui/material": "^7.0.1",
     "@reduxjs/toolkit": "^2.6.1",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
